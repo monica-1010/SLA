@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"> <head>
+    <meta charset="UTF-8">
+    <title>My Interactive Portfolio</title>
+    <style>
+        /* Styling by CLASS (multiple elements) */
+        .card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 10px;
+            display: inline-block;
+            border-radius: 8px;
+        }
+
+        /* Styling by ID (one unique element) */
+        #main-footer {
+            background-color: #dc8c8c;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #projects{
+          background-color: aquamarine;
+          width:700px;
+          height:1000px;
+        }
+        .card{
+          width:400px;
+          height:300px;
+           border: 5px dashed goldenrod; 
+        }
+        
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a> | 
+        <a href="#projects">My Projects (Relative ID link)</a> | 
+        <a href="https://github.com" target="_blank">External GitHub (Absolute)</a>
+    </nav>
+
+    <hr>
+        
+    <section id="projects">
+        <div>
+          <a href="https://learning.slainstitute.com/" target="_blank">
+            <img src="https://learning.slainstitute.com/orglogo?date=20049000000201007" alt="National Geographic Home" width="150" height="50">
+          </a>
+        </div>  
+        <h2 title="GOT INFO!">INFORMATION</h2> <p lang="ta">இது மொழி உரை.</p>
+        <p draggable="true">Drag me</p>
+         <div class="card">
+         
+                <img src="https://i.pinimg.com/736x/2b/8a/b2/2b8ab22fcc4b73cc7f198fa6a7b25fad.jpg" 
+                     alt="Preview of Project 1" 
+                     width="150" height="150">
+           
+            
+            <p><b>Project One</b></p>
+            <p>Check these content writing samples and find out how to do yours with our free templates! Get answers to all your writing sample questions.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcUpgndqIjnGb0WkUxgDpcCpgWlhk1L7z0cA&s" 
+                 alt="Preview of Project 2" 
+                 width="150" height="150">
+            <p><b>Project TWO</b></p>
+            <p>Check these content writing samples and find out how to do yours with our free templates! Get answers to all your writing sample questions.</p>
+        </div>
+      
+    </section>
+
+    <section>
+        <h3>Contact & Files</h3>
+        
+        <a href="mailto:hello@example.com">Send me an Email</a>
+    </section>
+
+    <footer id="main-footer">
+        <p>&copy; 2026 My Web Project</p>
+        
+        <p hidden>This text is hidden from the user but exists in the code.</p>
+    </footer>
+
+</body>
+</html>
