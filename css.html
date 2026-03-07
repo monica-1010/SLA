@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Selectors Task</title>
+  <style>
+    p {
+      color: #555;
+      line-height: 1.6;
+    }
+
+
+    .intro {
+      font-style: italic;
+
+      .highlight {
+        background-color: #f0f8ff;
+        padding: 8px;
+      }
+
+
+      #header {
+        color: #2c3e50;
+        font-size: 32px;
+      }
+
+
+      .box {
+        border: 1px solid #ccc;
+        padding: 16px;
+        margin-top: 10px;
+      }
+  </style>
+</head>
+
+<body>
+  <h1 id="header">Project Styling Header</h1>
+
+  <div class="box">
+    <p class="intro">
+      This paragraph uses the .intro class to appear in italics. It also
+      inherits the grey color and line-height from the p element selector.
+    </p>
+
+    <p>
+      This is a standard paragraph. It only follows the general element rules
+      (color #555 and 1.6 line-height).
+    </p>
+
+    <p class="highlight">
+      This paragraph uses the .highlight class, giving it a light blue
+      background and extra internal spacing (padding).
+    </p>
+  </div>
+</body>
+
+</html>
