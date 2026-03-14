@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Model Demo</title>
+    <style>
+        body {
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        .box {
+
+            width: 300px;
+            background-color: white;
+            padding: 30px;
+            border: 10px solid #3498db;
+            margin: 50px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .label {
+            font-weight: bold;
+            color: #3498db;
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <span class="label">The Content Area</span>
+        This text is the "Content." The white space around this text is the "Padding."
+        The blue line is the "Border," and the grey space outside the blue line is the "Margin."
+    </div>
+
+</body>
+
+</html>
