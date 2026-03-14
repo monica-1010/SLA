@@ -1,0 +1,13 @@
+body {
+  background-color: #fafafa;
+}
+.box {
+  width: 350px;
+  background-color: #fff176;
+  padding: 25px;
+  border: 8px solid #f57f17;
+  margin: 60px auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  text-align: center;
+}
