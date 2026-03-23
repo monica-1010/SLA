@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>DOM</title>
+    <style>
+        .list-item {
+            color: blue;
+            font-family: sans-serif;
+            margin: 5px;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>My Dynamic Task List</h1>
+    </div>
+
+    <script>
+        const container = document.getElementById("container");
+
+        const newList = document.createElement("ul");
+
+        for (let i = 1; i <= 5; i++) {
+
+            const item = document.createElement("li");
+            item.textContent = "Task Number " + i;
+            item.classList.add("list-item");
+            if (i === 3) {
+                item.classList.add("highlight");
+                item.textContent += " (Priority!)";
+            }
+            newList.appendChild(item);
+        }
+
+        container.appendChild(newList);
+    </script>
+</body>
+
+</html>
