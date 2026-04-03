@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Beginner JS Playground</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; padding: 50px; background: #f0f2f5; }
+        .box { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); width: 350px; }
+        h2 { color: #333; margin-top: 0; }
+        .display { font-size: 2rem; font-weight: bold; color: #4a90e2; margin: 10px 0; }
+        button { padding: 8px 15px; cursor: pointer; border: none; border-radius: 5px; background: #4a90e2; color: white; }
+        button:hover { background: #357abd; }
+        ul { margin-top: 20px; padding-left: 20px; color: #555; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Simple Tracker</h2>
+    
+    <div class="display" id="counterDisplay">0</div>
+    
+    <button onclick="tracker.increment()">+ Add 1</button>
+    <button onclick="tracker.reset()" style="background:#999">Reset</button>
+
+    <h3>History:</h3>
+    <ul id="historyList"></ul>
+</div>
+
+<script>
+    // 1. THE OBJECT (Grouping data and functions)
+    const tracker = {
+        // Properties (Data)
+        count: 0,
+        history: [],
+
+        // Method 1: Change the data
+        increment: function() {
+            this.count++; // Increment property
+            this.history.push(`Clicked at count: ${this.count}`); // Array push
+            this.updateUI(); // Call another method
+        },
+
+        // Method 2: Reset the data
+        reset: function() {
+            this.count = 0;
+            this.history = []; // Clear the array
+            this.updateUI();
+        },
+
+        // Method 3: Update what the user sees
+        updateUI: function() {
+            // Update the counter text
+            document.getElementById('counterDisplay').innerText = this.count;
+
+            // Update the list using a Loop (forEach) and Template Literals
+            const list = document.getElementById('historyList');
+            list.innerHTML = ""; // Clear old list
+            
+            this.history.forEach((
