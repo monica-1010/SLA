@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Iteration & Search Demo</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #f0f2f5; color: #333; }
+        .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); max-width: 800px; margin: auto; }
+        h1 { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h3 { color: #3498db; margin-top: 25px; }
+        .result-box { background: #282c34; color: #abb2bf; padding: 15px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; margin: 10px 0; }
+        .label { font-weight: bold; color: #e67e22; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>JS Array Methods </h1>
+  
+
+    <h3>1. Iteration Methods (4)</h3>
+    <div id="iteration-results" class="result-box"></div>
+
+    <h3>2. Search Methods (3)</h3>
+    <div id="search-results" class="result-box"></div>
+</div>
+
+<script>
+    const inventory = [
+        { id: 1, name: "Laptop", price: 1200, stock: 5 },
+        { id: 2, name: "Mouse", price: 25, stock: 12 },
+        { id: 3, name: "Keyboard", price: 75, stock: 8 },
+        { id: 4, name: "Monitor", price: 300, stock: 3 }
+    ];
+
+    // --- ITERATION METHODS ---
+    
+    // 1. forEach (Log each item)
+    let forEachStr = "forEach: ";
+    inventory.forEach(item => forEachStr += `${item.name} | `);
+
+    // 2. map (Create array of names)
+    const names = inventory.map(item => item.name.toUpperCase());
+
+    // 3. filter (Items over $100)
+    const expensiveItems = inventory.filter(item => item.price > 100);
+
+    // 4. reduce (Total inventory value)
+    const totalValue = inventory.reduce((acc, item) => acc + (item.price * item.stock), 0);
+
+    document.getElementById('iteration-results').innerHTML = 
+        `<span class="label">forEach:</span> ${forEachStr}\n` +
+        `<span class="label">map (Names):</span> ${JSON.stringify(names)}\n` +
+        `<span class="label">filter (Price > 100):</span> ${expensiveItems.length} items found\n` +
+        `<span class="label">reduce (Total Value):</span> $${totalValue}`;
+
+
+    // --- SEARCH METHODS ---
+
+    // 1. find (Find the Mouse object)
+    const foundItem = inventory.find(item => item.name === "Mouse");
+
+    // 2. findIndex (Find index of Monitor)
+    const monitorIndex = inventory.findIndex(item => item.name === "Monitor");
+
+    // 3. includes (Check simple array for value)
+    const tags = ["tech", "office", "gaming"];
+    const hasGaming = tags.includes("gaming");
+
+    document.getElementById('search-results').innerHTML = 
+        `<span class="label">find (Mouse):</span> ${JSON.stringify(foundItem)}\n` +
+        `<span class="label">findIndex (Monitor):</span> Index ${monitorIndex}\n` +
+        `<span class="label">includes ("gaming"):</span> ${hasGaming}`;
+
+    // Log to console for better inspection
+    console.log("Iteration Samples:", { names, expensiveItems, totalValue });
+    console.log("Search Samples:", { foundItem, monitorIndex, hasGaming });
+</script>
+
+</body>
+</html>
