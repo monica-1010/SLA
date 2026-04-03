@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 Features & Arrow Functions</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; line-height: 1.6; background: #fdfdfd; }
+        .container { max-width: 700px; margin: auto; border: 1px solid #ddd; border-radius: 8px; padding: 20px; background: white; }
+        .feature-block { margin-bottom: 25px; padding: 15px; border-left: 5px solid #61dafb; background: #f9f9f9; }
+        code { color: #d63384; font-weight: bold; }
+        .output { color: #2c3e50; font-style: italic; margin-top: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>ES6 Features & Arrow Functions</h1>
+
+    <div class="feature-block">
+        <h3>1. Template Literals</h3>
+        <p>Using backticks (<code>`</code>) instead of quotes allows for easy string interpolation.</p>
+        <div id="template-output" class="output"></div>
+    </div>
+
+    <div class="feature-block">
+        <h3>2. Destructuring (Objects & Arrays)</h3>
+        <p>Unpack values from arrays or properties from objects into distinct variables.</p>
+        <div id="destructure-output" class="output"></div>
+    </div>
+
+    <div class="feature-block">
+        <h3>3. Arrow Functions</h3>
+        <p>A shorter syntax for writing functions. They also don't have their own <code>this</code> context.</p>
+        <div id="arrow-output" class="output"></div>
+    </div>
+</div>
+
+<script>
+    // --- 1. Template Literals ---
+    const user = "Alex";
+    const items = 5;
+    // No more "Hello " + user + "!"
+    const greeting = `Hello, ${user}! You have ${items} messages in your inbox.`;
+    document.getElementById('template-output').innerText = greeting;
+
+
+    // --- 2. Destructuring ---
+    // Object Destructuring
+    const settings = { theme: 'Dark', fontSize: '16px', showSidebar: true };
+    const { theme, fontSize } = settings; 
+
+    // Array Destructuring
+    const colors = ['#FF0000', '#00FF00', '#0000FF'];
+    const [red, green] = colors;
+
+    document.getElementById('destructure-output').innerHTML = 
+        `Object: Theme is <b>${theme}</b>, Size is <b>${fontSize}</b><br>` +
+        `Array: Primary color is <b>${red}</b>`;
+
+
+    // --- 3. Arrow Functions ---
+    // Traditional Function
+    function add(a, b) { return a + b; }
+
+    // Arrow Function (implicit return)
+    const multiply = (a, b) => a * b;
+
+    // Arrow Function with one parameter (no parentheses needed)
+    const square = n => n * n;
+
+    document.getElementById('arrow-output').innerHTML = 
+        `Multiplication (5 * 4): <b>${multiply(5, 4)}</b><br>` +
+        `Square (9): <b>${square(9)}</b>`;
+
+    console.log("ES6 Demo Loaded Successfully");
+</script>
+
+</body>
+</html>
