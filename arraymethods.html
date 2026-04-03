@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Array Methods</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; background-color: #f4f4f9; }
+        .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        code { background: #eee; padding: 2px 5px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Array Operations Output</h2>
+        <p>Check the browser console (F12) for detailed logs, or see the final list below:</p>
+        <ul id="output"></ul>
+    </div>
+
+    <script>
+  
+        let fruits = ["Apple", "Banana"];
+        console.log("Initial:", fruits);
+
+        fruits.push("Cherry"); 
+ 
+
+
+        let lastItem = fruits.pop(); 
+      
+
+
+        fruits.unshift("Mango"); 
+ 
+
+   
+        let firstItem = fruits.shift(); 
+
+
+        
+        fruits.push("Orange", "Grape", "Kiwi");
+
+       
+        const outputList = document.getElementById('output');
+        
+        console.log("Printing array elements:");
+        for (let i = 0; i < fruits.length; i++) {
+            console.log(`Index ${i}: ${fruits[i]}`);
+         
+            let li = document.createElement('li');
+            li.textContent = fruits[i];
+            outputList.appendChild(li);
+        }
+    </script>
+</body>
+</html>
