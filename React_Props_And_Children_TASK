@@ -1,0 +1,63 @@
+import React from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
+// --- Student Component (Uses Props and Children) ---
+const Student = ({ id, children }) => (
+  <div style={{ padding: '20px', border: '1px solid blue', margin: '10px' }}>
+    <h3>Student Profile</h3>
+    <p><strong>ID:</strong> {id}</p>
+    <div>{children}</div>
+  </div>
+);
+
+// --- Trainer Component (Uses Props and Children) ---
+const Trainer = ({ id, children }) => (
+  <div style={{ padding: '20px', border: '1px solid green', margin: '10px' }}>
+    <h3>Trainer Profile</h3>
+    <p><strong>Employee ID:</strong> {id}</p>
+    <div>{children}</div>
+  </div>
+);
+
+// --- Navigation ---
+const Navbar = () => (
+  <nav style={{ padding: '10px', background: '#333', color: '#fff', display: 'flex', gap: '15px' }}>
+    <Link to="/" style={{ color: 'white' }}>Home</Link>
+    <Link to="/student" style={{ color: 'white' }}>Student</Link>
+    <Link to="/trainer" style={{ color: 'white' }}>Trainer</Link>
+  </nav>
+);
+
+// --- Main App ---
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <div style={{ fontFamily: 'Arial, sans-serif' }}>
+        <Routes>
+          <Route path="/" element={<h2 style={{ padding: '20px' }}>Welcome to the Portal</h2>} />
+          
+          <Route 
+            path="/student" 
+            element={
+              <Student id="S101">
+                <p>Course: Full Stack Development</p>
+                <p>Status: Enrolled</p>
+              </Student>
+            } 
+          />
+          
+          <Route 
+            path="/trainer" 
+            element={
+              <Trainer id="T500">
+                <p>Expertise: React & Node.js</p>
+                <p>Experience: 5+ Years</p>
+              </Trainer>
+            } 
+          />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  );
+}
