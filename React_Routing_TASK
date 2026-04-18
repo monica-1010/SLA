@@ -1,0 +1,46 @@
+import React from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
+// --- Pages (Components) ---
+const Home = () => <div style={{ padding: '20px' }}><h2>Home Page</h2><p>Welcome to our site!</p></div>;
+const About = () => <div style={{ padding: '20px' }}><h2>About Page</h2><p>We are a React-powered team.</p></div>;
+const Users = () => <div style={{ padding: '20px' }}><h2>Users Page</h2><p>List of all active users.</p></div>;
+
+// --- Navigation Bar ---
+const Navbar = () => {
+  return (
+    <nav style={{ 
+      padding: '1rem', 
+      backgroundColor: '#f4f4f4', 
+      display: 'flex', 
+      gap: '15px',
+      borderBottom: '1px solid #ddd' 
+    }}>
+      <Link to="/" style={{ textDecoration: 'none', color: 'blue' }}>Home</Link>
+      <Link to="/about" style={{ textDecoration: 'none', color: 'blue' }}>About</Link>
+      <Link to="/users" style={{ textDecoration: 'none', color: 'blue' }}>Users</Link>
+    </nav>
+  );
+};
+
+// --- Main App Component ---
+function App() {
+  return (
+    <BrowserRouter>
+      <div>
+        <Navbar />
+        
+        {/* Route Definitions */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/users" element={<Users />} />
+          {/* 404 Page (Optional) */}
+          <Route path="*" element={<h2 style={{ padding: '20px' }}>404 - Not Found</h2>} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  );
+}
+
+export default App;
