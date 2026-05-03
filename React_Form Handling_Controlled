@@ -1,0 +1,116 @@
+import React, { useState, useRef } from 'react';
+
+/** 
+ * 1. Feedback Form (Uncontrolled Components)
+ * Uses refs to pull data from the DOM only when the button is clicked.
+ */
+const FeedbackForm = () => {
+  const nameRef = useRef(null);
+  const commentRef = useRef(null);
+  const [display, setDisplay] = useState(null);
+
+  const handleFeedbackSubmit = (e) => {
+    e.preventDefault();
+    // Accessing values directly from DOM nodes
+    const data = {
+      name: nameRef.current.value,
+      comment: commentRef.current.value,
+    };
+    setDisplay(data);
+    e.target.reset(); // Manual reset
+  };
+
+  return (
+    <div style={styles.card}>
+      <h3>Uncontrolled Feedback Form</h3>
+      <form onSubmit={handleFeedbackSubmit}>
+        <input ref={nameRef} placeholder="Your Name" style={styles.input} required />
+        <textarea ref={commentRef} placeholder="Feedback" style={styles.input} required />
+        <button type="submit" style={styles.buttonSecondary}>Post Feedback</button>
+      </form>
+      {display && (
+        <div style={styles.preview}>
+          <strong>Latest Feedback:</strong> {display.name} says "{display.comment}"
+        </div>
+      )}
+    </div>
+  );
+};
+
+/** 
+ * 2. Registration Form (Controlled Components)
+ * Uses a single state object to track multiple inputs in real-time.
+ */
+const RegistrationForm = () => {
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    role: 'Guest'
+  });
+  const [users, setUsers] = useState([]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    // Updating state dynamically using the name attribute
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleRegSubmit = (e) => {
+    e.preventDefault();
+    setUsers((prev) => [...prev, formData]);
+    setFormData({ username: '', email: '', role: 'Guest' }); // Reset state
+  };
+
+  return (
+    <div style={styles.card}>
+      <h3>Controlled Registration</h3>
+      <form onSubmit={handleRegSubmit}>
+        <input name="username" value={formData.username} onChange={handleChange} placeholder="Username" style={styles.input} required />
+        <input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="Email" style={styles.input} required />
+        <select name="role" value={formData.role} onChange={handleChange} style={styles.input}>
+          <option value="Guest">Guest</option>
+          <option value="Member">Member</option>
+          <option value="Admin">Admin</option>
+        </select>
+        <button type="submit" style={styles.buttonPrimary}>Add User</button>
+      </form>
+
+      <div style={styles.list}>
+        <h4>User List:</h4>
+        {users.length === 0 ? <p>No users yet.</p> : users.map((u, i) => (
+          <div key={i} style={styles.userItem}>
+            {u.username} ({u.email}) - <b>{u.role}</b>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+/** 
+ * Main App Component
+ */
+export default function App() {
+  return (
+    <div style={styles.container}>
+      <h1 style={{ textAlign: 'center' }}>Form Handling Demo</h1>
+      <div style={styles.flexRow}>
+        <FeedbackForm />
+        <RegistrationForm />
+      </div>
+    </div>
+  );
+}
+
+// Simple CSS-in-JS styles
+const styles = {
+  container: { padding: '20px', fontFamily: 'Arial, sans-serif', maxWidth: '900px', margin: '0 auto' },
+  flexRow: { display: 'flex', gap: '20px', flexWrap: 'wrap' },
+  card: { border: '1px solid #ddd', padding: '20px', borderRadius: '8px', flex: '1', minWidth: '300px', backgroundColor: '#f9f9f9' },
+  input: { display: 'block', width: '100%', marginBottom: '10px', padding: '8px', boxSizing: 'border-box' },
+  buttonPrimary: { backgroundColor: '#007bff', color: 'white', border: 'none', padding: '10px', cursor: 'pointer', width: '100%' },
+  buttonSecondary: { backgroundColor: '#28a745', color: 'white', border: 'none', padding: '10px', cursor: 'pointer', width: '100%' },
+  preview: { marginTop: '15px', padding: '10px', backgroundColor: '#e9ecef', borderRadius: '4px' },
+  list: { marginTop: '20px' },
+  userItem: { padding: '5px 0', borderBottom: '1px solid #eee' }
+};
