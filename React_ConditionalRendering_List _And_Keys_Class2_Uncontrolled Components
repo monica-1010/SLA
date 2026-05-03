@@ -1,0 +1,38 @@
+import React, { useRef, useState } from 'react';
+
+export default function FeedbackForm() {
+  const nameRef = useRef(null);
+  const emailRef = useRef(null);
+  const messageRef = useRef(null);
+  const [result, setResult] = useState(null);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    
+    // Validating presence before setting state
+    const data = {
+      name: nameRef.current?.value,
+      email: emailRef.current?.value,
+      message: messageRef.current?.value,
+    };
+
+    setResult(data);
+  };
+
+  return (
+    <div style={{ fontFamily: 'sans-serif', padding: '2rem' }}>
+      <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '300px' }}>
+        <input ref={nameRef} type="text" placeholder="Name" required />
+        <input ref={emailRef} type="email" placeholder="Email" required />
+        <textarea ref={messageRef} placeholder="Message" required />
+        <button type="submit">Submit Feedback</button>
+      </form>
+
+      {result && (
+        <pre style={{ background: '#f4f4f4', padding: '1rem', marginTop: '1rem' }}>
+          {JSON.stringify(result, null, 2)}
+        </pre>
+      )}
+    </div>
+  );
+}
